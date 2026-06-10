@@ -433,9 +433,41 @@
 
 <!-- ============================================================
      ADA BOT EMBED
-     Paste your Ada embed <script> snippet directly below this
-     comment. It will load on every page that includes this block.
      ============================================================ -->
+<script>
+  window.adaSettings = {
+    handle: "ada-telecom-ai-agent-demo",
+    hideMask: false
+  };
+</script>
+<script src="https://static.ada.support/embed2.js" async></script>
+
+<!-- 5-click proactive trigger (product page only) -->
+<script>
+  (function () {
+    var CLICK_THRESHOLD = 5;
+    var KEY = "at-proactive-iphone17promax-fired";
+    var clicks = 0;
+
+    if (sessionStorage.getItem(KEY)) return;
+
+    document.addEventListener("click", function () {
+      clicks += 1;
+      if (clicks >= CLICK_THRESHOLD) {
+        document.removeEventListener("click", arguments.callee);
+        sessionStorage.setItem(KEY, "1");
+        function tryTrigger() {
+          if (window.adaEmbed && typeof window.adaEmbed.triggerProactive === "function") {
+            window.adaEmbed.triggerProactive({ messageKey: "iphone17promax" });
+          } else {
+            setTimeout(tryTrigger, 400);
+          }
+        }
+        tryTrigger();
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
