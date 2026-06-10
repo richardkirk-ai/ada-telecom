@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ada Telecoms — Phones &amp; Plans</title>
+<link rel="stylesheet" href="ada-telecoms.css">
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+    padding: 72px 0 64px 0;
+  }
+  .hero-copy { display: flex; flex-direction: column; gap: 26px; align-items: flex-start; }
+  .hero-copy .display-gold { font-size: clamp(48px, 6.4vw, 84px); }
+  .hero-sub {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--at-text-2);
+    margin: 0;
+    max-width: 46ch;
+    text-wrap: pretty;
+  }
+  .hero-cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .hero-stage {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 28px;
+    padding: 36px 12px;
+  }
+  .hero-stage::before {
+    content: "";
+    position: absolute;
+    inset: auto 8% 8px 8%;
+    height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(10, 5, 30, 0.65), transparent 70%);
+  }
+  .hero-stage .phone { position: relative; }
+  .hero-stage .phone:nth-child(2) { transform: translateY(-22px); }
+  .pricing-flag {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: var(--at-gold-grad);
+    color: var(--at-ink-on-gold);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+  }
+  .pricing-flag .flag-num { font-size: 24px; font-weight: 800; letter-spacing: 0.01em; white-space: nowrap; }
+  .pricing-flag .flag-sub { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .duo-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding: 10px 0 0 0;
+  }
+  .duo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 40px 32px 36px 32px;
+    text-align: center;
+  }
+  .duo-card .duo-glyph {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 32% 28%, #4A3A98 0%, #2C2060 75%);
+    border: 1.5px solid var(--at-gold-border);
+  }
+  .duo-card .duo-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    background: var(--at-gold-text-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .duo-card .duo-sub { font-size: 15px; color: var(--at-text-2); margin: 0; max-width: 36ch; }
+
+  .featured { padding: 76px 0 0 0; display: flex; flex-direction: column; gap: 30px; }
+  .featured-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; }
+  .featured-head a { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--at-gold-text); }
+  .featured-head a:hover { color: var(--at-gold-1); }
+  .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .phone-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 32px 26px 30px 26px;
+    text-align: center;
+  }
+  .phone-card .phone { padding: 10px 0 22px 0; }
+  .phone-card .card-name {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--at-text);
+  }
+  .phone-card .card-tag { font-size: 14px; color: var(--at-text-2); margin: 0; }
+  .phone-card .card-price {
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--at-gold-text);
+  }
+  .phone-card .card-price strong { font-size: 22px; font-weight: 800; }
+
+  @media (max-width: 920px) {
+    .hero { grid-template-columns: 1fr; }
+    .duo-cards { grid-template-columns: 1fr; }
+    .featured-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-header" data-screen-label="Home — header">
+    <a class="brand" href="index.html">
+      <span class="brand-badge">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+          <defs>
+            <linearGradient id="atb-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F8E6B0"></stop>
+              <stop offset="0.55" stop-color="#E2BB6A"></stop>
+              <stop offset="1" stop-color="#B9883B"></stop>
+            </linearGradient>
+            <linearGradient id="atb-gold-2" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#F8E6B0"></stop>
+              <stop offset="0.5" stop-color="#D9AE5E"></stop>
+              <stop offset="1" stop-color="#A87C33"></stop>
+            </linearGradient>
+            <radialGradient id="atb-disc" cx="0.32" cy="0.26" r="0.95">
+              <stop offset="0" stop-color="#473794"></stop>
+              <stop offset="0.65" stop-color="#2B1F5E"></stop>
+              <stop offset="1" stop-color="#211A4A"></stop>
+            </radialGradient>
+          </defs>
+          <circle cx="48" cy="48" r="45.5" fill="url(#atb-disc)" stroke="url(#atb-gold)" stroke-width="3"></circle>
+          <circle cx="48" cy="48" r="41" fill="none" stroke="url(#atb-gold-2)" stroke-width="1.2" opacity="0.75"></circle>
+          <path d="M 18 30 A 36 36 0 0 1 60 13" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1.5" stroke-linecap="round"></path>
+          <text x="48" y="54" text-anchor="middle" font-family="'Inter Tight', system-ui, sans-serif" font-size="33" font-weight="800" fill="url(#atb-gold)">AT</text>
+          <text x="49" y="67" text-anchor="middle" font-family="'Inter Tight', system-ui, sans-serif" font-size="6.6" font-weight="700" letter-spacing="1.5" fill="#E8C87E">ADA TELECOMS</text>
+        </svg>
+      </span>
+      <span class="brand-name">
+        <span class="brand-title">Ada Telecoms</span>
+        <span class="brand-tag">Phones · Plans · Broadband</span>
+      </span>
+    </a>
+    <nav class="site-nav">
+      <a href="phones.html" class="active">Phones</a>
+      <a href="phones.html">Sim only</a>
+      <a href="phones.html">Promotions</a>
+    </nav>
+    <div class="header-actions">
+      <button class="basket-pill" type="button">Basket <span class="count" data-basket-count="">0</span></button>
+    </div>
+  </header>
+</div>
+
+<hr class="gold-rule">
+
+<main class="wrap">
+
+  <section class="hero" data-screen-label="Home — hero">
+    <div class="hero-copy">
+      <p class="eyebrow">The new iPhone range, on Ada</p>
+      <h1 class="display-gold">Phones<br><span style="white-space: nowrap;">&amp; Plans</span></h1>
+      <p class="hero-sub">The latest iPhone, paired with unlimited data plans on the UK&rsquo;s most awarded 5G network. Spread the cost over 36 months &mdash; no interest, no surprises.</p>
+      <div class="hero-cta-row">
+        <a class="btn-gold" href="phones.html">Shop iPhone</a>
+        <a class="btn-outline" href="product.html?id=iphone-17-pro-max">See iPhone 17 Pro Max</a>
+      </div>
+    </div>
+    <div class="hero-stage" id="hero-stage" data-screen-label="Home — hero phones">
+      <div class="pricing-flag">
+        <span class="flag-sub">From</span>
+        <span class="flag-num" id="hero-price">&nbsp;</span>
+        <span class="flag-sub">a month</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="duo-cards" data-screen-label="Home — categories">
+    <a class="gold-card duo-card" href="phones.html">
+      <span class="duo-glyph">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E8C87E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"></rect><circle cx="12" cy="18" r="0.9" fill="#E8C87E"></circle></svg>
+      </span>
+      <span class="duo-title">Pay monthly phones</span>
+      <p class="duo-sub">Every iPhone in the range, with flexible storage and colour options.</p>
+    </a>
+    <a class="gold-card duo-card" href="phones.html">
+      <span class="duo-glyph">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E8C87E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="5" width="15" height="14" rx="2.5"></rect><path d="M8.5 9h4"></path><path d="M8.5 12.5h7"></path><path d="M8.5 16h7"></path></svg>
+      </span>
+      <span class="duo-title">Sim only plans</span>
+      <p class="duo-sub">Keep your phone, switch your plan. Unlimited data from &pound;14 a month.</p>
+    </a>
+  </section>
+
+  <section class="featured" data-screen-label="Home — featured phones">
+    <div class="featured-head">
+      <h2 class="section-title">Featured iPhones</h2>
+      <a href="phones.html">View all &rarr;</a>
+    </div>
+    <div class="featured-grid" id="featured-grid"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <span class="footer-head">Shop</span>
+        <a href="phones.html">Pay monthly phones</a>
+        <a href="phones.html">Sim only</a>
+        <a href="phones.html">Promotions</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-head">Help</span>
+        <a href="index.html">Delivery &amp; returns</a>
+        <a href="index.html">Coverage checker</a>
+        <a href="index.html">Contact us</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-head">Ada Telecoms</span>
+        <a href="index.html">Why Ada</a>
+        <a href="index.html">Our network</a>
+        <a href="index.html">Careers</a>
+      </div>
+    </div>
+    <hr class="gold-rule">
+    <div class="footer-legal">
+      <span>Ada Telecoms is a demo experience. Prices and products are illustrative.</span>
+      <span>&copy; 2026 Ada Telecoms</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  (function () {
+    var phones = window.AT_PHONES;
+
+    // Hero: two hero phones
+    var stage = document.getElementById("hero-stage");
+    var heroA = phones[0]; // 17 Pro Max
+    var heroB = phones[2]; // Air
+    stage.insertAdjacentHTML("beforeend", window.atPhoneVisual(heroA, heroA.colors[0].hex, "phone--lg"));
+    stage.insertAdjacentHTML("beforeend", window.atPhoneVisual(heroB, heroB.colors[0].hex, ""));
+    document.getElementById("hero-price").textContent = window.atMoney(window.atFromPrice(phones[4]));
+
+    // Featured grid: first three phones
+    var grid = document.getElementById("featured-grid");
+    phones.slice(0, 3).forEach(function (p) {
+      grid.insertAdjacentHTML("beforeend",
+        '<a class="gold-card phone-card" href="product.html?id=' + p.id + '">' +
+          window.atPhoneVisual(p, p.colors[0].hex, "") +
+          '<span class="card-name">' + p.name + '</span>' +
+          '<p class="card-tag">' + p.tagline + '</p>' +
+          '<span class="card-price">from <strong>' + window.atMoney(window.atFromPrice(p)) + '</strong> a month</span>' +
+        '</a>');
+    });
+  })();
+</script>
+
+<!-- ============================================================
+     ADA BOT EMBED
+     Paste your Ada embed <script> snippet directly below this
+     comment. It will load on every page that includes this block.
+     ============================================================ -->
+
+</body>
+</html>

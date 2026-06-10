@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ada Telecoms — Pay monthly iPhones</title>
+<link rel="stylesheet" href="ada-telecoms.css">
+<style>
+  .page-head {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 52px 0 38px 0;
+  }
+  .page-head .display-gold { font-size: clamp(36px, 4.6vw, 58px); }
+  .page-head p { font-size: 17px; color: var(--at-text-2); margin: 0; max-width: 60ch; }
+
+  .filter-row { display: flex; gap: 12px; flex-wrap: wrap; padding-bottom: 30px; }
+  .filter-chip {
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1.5px solid var(--at-gold-border);
+    background: transparent;
+    color: var(--at-gold-text);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 120ms var(--at-ease), color 120ms var(--at-ease);
+  }
+  .filter-chip:hover { background: rgba(222, 184, 110, 0.12); }
+  .filter-chip.active {
+    background: var(--at-gold-grad);
+    color: var(--at-ink-on-gold);
+    border-color: #8A6526;
+  }
+
+  .range-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .phone-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 34px 26px 30px 26px;
+    text-align: center;
+  }
+  .phone-card .phone { padding: 8px 0 22px 0; }
+  .phone-card .card-name {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--at-text);
+  }
+  .phone-card .card-tag { font-size: 14px; color: var(--at-text-2); margin: 0; }
+  .swatch-row { display: flex; gap: 8px; margin-top: 14px; }
+  .swatch-row span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+  }
+  .phone-card .card-price {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--at-gold-text);
+  }
+  .phone-card .card-price strong { font-size: 22px; font-weight: 800; }
+  .phone-card .card-upfront { font-size: 12.5px; color: var(--at-text-3); margin-top: 2px; }
+
+  @media (max-width: 920px) {
+    .range-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 620px) {
+    .range-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site-header" data-screen-label="Phones — header">
+    <a class="brand" href="index.html">
+      <span class="brand-badge">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+          <defs>
+            <linearGradient id="atb-gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F8E6B0"></stop>
+              <stop offset="0.55" stop-color="#E2BB6A"></stop>
+              <stop offset="1" stop-color="#B9883B"></stop>
+            </linearGradient>
+            <linearGradient id="atb-gold-2" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#F8E6B0"></stop>
+              <stop offset="0.5" stop-color="#D9AE5E"></stop>
+              <stop offset="1" stop-color="#A87C33"></stop>
+            </linearGradient>
+            <radialGradient id="atb-disc" cx="0.32" cy="0.26" r="0.95">
+              <stop offset="0" stop-color="#473794"></stop>
+              <stop offset="0.65" stop-color="#2B1F5E"></stop>
+              <stop offset="1" stop-color="#211A4A"></stop>
+            </radialGradient>
+          </defs>
+          <circle cx="48" cy="48" r="45.5" fill="url(#atb-disc)" stroke="url(#atb-gold)" stroke-width="3"></circle>
+          <circle cx="48" cy="48" r="41" fill="none" stroke="url(#atb-gold-2)" stroke-width="1.2" opacity="0.75"></circle>
+          <path d="M 18 30 A 36 36 0 0 1 60 13" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1.5" stroke-linecap="round"></path>
+          <text x="48" y="54" text-anchor="middle" font-family="'Inter Tight', system-ui, sans-serif" font-size="33" font-weight="800" fill="url(#atb-gold)">AT</text>
+          <text x="49" y="67" text-anchor="middle" font-family="'Inter Tight', system-ui, sans-serif" font-size="6.6" font-weight="700" letter-spacing="1.5" fill="#E8C87E">ADA TELECOMS</text>
+        </svg>
+      </span>
+      <span class="brand-name">
+        <span class="brand-title">Ada Telecoms</span>
+        <span class="brand-tag">Phones · Plans · Broadband</span>
+      </span>
+    </a>
+    <nav class="site-nav">
+      <a href="phones.html" class="active">Phones</a>
+      <a href="phones.html">Sim only</a>
+      <a href="phones.html">Promotions</a>
+    </nav>
+    <div class="header-actions">
+      <button class="basket-pill" type="button">Basket <span class="count" data-basket-count="">0</span></button>
+    </div>
+  </header>
+</div>
+
+<hr class="gold-rule">
+
+<main class="wrap" data-screen-label="Phones — range">
+
+  <section class="page-head">
+    <p class="eyebrow">Pay monthly</p>
+    <h1 class="display-gold">The iPhone range</h1>
+    <p>Pick your iPhone, then choose a colour, storage and plan on the next step. Every phone comes with unlimited calls and texts, spread over 36 months at 0% interest.</p>
+  </section>
+
+  <div class="filter-row" id="filter-row">
+    <button class="filter-chip active" type="button" data-filter="all">All models</button>
+    <button class="filter-chip" type="button" data-filter="Pro">Pro</button>
+    <button class="filter-chip" type="button" data-filter="Air">Air</button>
+    <button class="filter-chip" type="button" data-filter="Standard">Everyday</button>
+  </div>
+
+  <section class="range-grid" id="range-grid"></section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <span class="footer-head">Shop</span>
+        <a href="phones.html">Pay monthly phones</a>
+        <a href="phones.html">Sim only</a>
+        <a href="phones.html">Promotions</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-head">Help</span>
+        <a href="index.html">Delivery &amp; returns</a>
+        <a href="index.html">Coverage checker</a>
+        <a href="index.html">Contact us</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-head">Ada Telecoms</span>
+        <a href="index.html">Why Ada</a>
+        <a href="index.html">Our network</a>
+        <a href="index.html">Careers</a>
+      </div>
+    </div>
+    <hr class="gold-rule">
+    <div class="footer-legal">
+      <span>Ada Telecoms is a demo experience. Prices and products are illustrative.</span>
+      <span>&copy; 2026 Ada Telecoms</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  (function () {
+    var grid = document.getElementById("range-grid");
+    var chips = Array.prototype.slice.call(document.querySelectorAll(".filter-chip"));
+
+    function render(filter) {
+      grid.innerHTML = "";
+      window.AT_PHONES
+        .filter(function (p) { return filter === "all" || p.family === filter; })
+        .forEach(function (p) {
+          var swatches = p.colors.map(function (c) {
+            return '<span style="background:' + c.hex + ';" title="' + c.name + '"></span>';
+          }).join("");
+          grid.insertAdjacentHTML("beforeend",
+            '<a class="gold-card phone-card" href="product.html?id=' + p.id + '">' +
+              window.atPhoneVisual(p, p.colors[0].hex, "") +
+              '<span class="card-name">' + p.name + '</span>' +
+              '<p class="card-tag">' + p.tagline + '</p>' +
+              '<span class="swatch-row">' + swatches + '</span>' +
+              '<span class="card-price">from <strong>' + window.atMoney(window.atFromPrice(p)) + '</strong> a month</span>' +
+              '<span class="card-upfront">' + (p.upfront > 0 ? window.atMoney(p.upfront) + " upfront" : "Nothing upfront") + '</span>' +
+            '</a>');
+        });
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        chips.forEach(function (c) { c.classList.remove("active"); });
+        chip.classList.add("active");
+        render(chip.dataset.filter);
+      });
+    });
+
+    render("all");
+  })();
+</script>
+
+<!-- ============================================================
+     ADA BOT EMBED
+     Paste your Ada embed <script> snippet directly below this
+     comment. It will load on every page that includes this block.
+     ============================================================ -->
+
+</body>
+</html>

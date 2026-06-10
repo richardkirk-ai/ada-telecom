@@ -1,0 +1,349 @@
+/* ============================================================
+   Ada Telecoms — theme
+   Palette lifted from the Ada Gaming brand image:
+   deep royal purple surfaces + warm gold accents
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+
+:root {
+  /* Purples */
+  --at-bg-deepest: #1E1545;
+  --at-bg: #2A1E5C;
+  --at-bg-2: #322568;
+  --at-panel: #3A2C74;
+  --at-panel-2: #443585;
+  --at-ink-on-gold: #3B2A72;
+
+  /* Golds */
+  --at-gold-1: #F6DFA4;
+  --at-gold-2: #E3BC6B;
+  --at-gold-3: #C2913F;
+  --at-gold-text: #E8C87E;
+  --at-gold-soft: #D9B670;
+  --at-gold-border: rgba(222, 184, 110, 0.55);
+  --at-gold-border-strong: rgba(232, 200, 126, 0.85);
+
+  /* Text */
+  --at-text: #F5F1FF;
+  --at-text-2: rgba(245, 241, 255, 0.72);
+  --at-text-3: rgba(245, 241, 255, 0.50);
+
+  --at-gold-grad: linear-gradient(180deg, var(--at-gold-1) 0%, var(--at-gold-2) 52%, var(--at-gold-3) 100%);
+  --at-gold-text-grad: linear-gradient(180deg, #F8E6B0 0%, #E2BB6A 60%, #C9974A 100%);
+
+  --at-radius: 14px;
+  --at-radius-sm: 10px;
+
+  --at-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter Tight", system-ui, -apple-system, sans-serif;
+  background: var(--at-bg);
+  color: var(--at-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(122, 96, 200, 0.28), transparent 60%),
+    radial-gradient(900px 700px at -10% 100%, rgba(20, 12, 50, 0.55), transparent 55%),
+    linear-gradient(160deg, #2E2264 0%, #271C58 45%, #221849 100%);
+  background-attachment: fixed;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+.wrap {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 22px 0 18px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-badge svg {
+  display: block;
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
+}
+
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name .brand-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--at-gold-text-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-name .brand-tag {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--at-text-3);
+  text-transform: uppercase;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.site-nav a {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--at-gold-text);
+  padding: 8px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 120ms var(--at-ease), border-color 120ms var(--at-ease);
+}
+
+.site-nav a:hover { color: var(--at-gold-1); }
+
+.site-nav a.active {
+  color: var(--at-gold-1);
+  border-bottom-color: var(--at-gold-2);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.basket-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--at-gold-border);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--at-gold-text);
+  cursor: pointer;
+  background: rgba(30, 21, 69, 0.4);
+  transition: background 120ms var(--at-ease);
+}
+
+.basket-pill:hover { background: rgba(30, 21, 69, 0.7); }
+
+.basket-pill .count {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--at-gold-grad);
+  color: var(--at-ink-on-gold);
+  font-weight: 800;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Gold rule ---------- */
+.gold-rule {
+  height: 1px;
+  border: none;
+  margin: 0;
+  background: linear-gradient(90deg, transparent, var(--at-gold-border) 18%, var(--at-gold-border) 82%, transparent);
+}
+
+/* ---------- Typography ---------- */
+.display-gold {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.02;
+  background: var(--at-gold-text-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--at-text-3);
+  margin: 0;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--at-gold-text-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+}
+
+/* ---------- Buttons ---------- */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 38px;
+  border-radius: var(--at-radius-sm);
+  background: var(--at-gold-grad);
+  border: 1px solid #8A6526;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 6px 18px rgba(0, 0, 0, 0.35);
+  color: var(--at-ink-on-gold);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 120ms var(--at-ease), transform 120ms var(--at-ease);
+}
+
+.btn-gold:hover { filter: brightness(1.05); }
+.btn-gold:active { transform: scale(0.98); }
+.btn-gold:disabled { filter: saturate(0.4) brightness(0.8); cursor: default; }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 30px;
+  border-radius: var(--at-radius-sm);
+  border: 1.5px solid var(--at-gold-border);
+  background: transparent;
+  color: var(--at-gold-text);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 120ms var(--at-ease), color 120ms var(--at-ease);
+}
+
+.btn-outline:hover { background: rgba(222, 184, 110, 0.12); color: var(--at-gold-1); }
+
+/* ---------- Gold-framed card ---------- */
+.gold-card {
+  background: linear-gradient(170deg, var(--at-panel) 0%, var(--at-bg-2) 100%);
+  border: 1.5px solid var(--at-gold-border);
+  border-radius: var(--at-radius);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 30px rgba(12, 7, 35, 0.45);
+}
+
+a.gold-card { transition: border-color 120ms var(--at-ease), transform 220ms var(--at-ease); }
+a.gold-card:hover { border-color: var(--at-gold-border-strong); transform: translateY(-3px); }
+
+/* ---------- Phone visual (SVG product render) ---------- */
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone svg {
+  display: block;
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 18px 32px rgba(10, 5, 30, 0.55));
+}
+
+.phone--sm svg { width: 108px; }
+.phone--lg svg { width: 215px; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  margin-top: 90px;
+  background: var(--at-bg-deepest);
+  border-top: 1px solid var(--at-gold-border);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 44px 0;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col .footer-head {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--at-gold-text);
+}
+
+.footer-col a {
+  font-size: 14px;
+  color: var(--at-text-2);
+}
+
+.footer-col a:hover { color: var(--at-text); }
+
+.footer-legal {
+  padding: 18px 0 26px 0;
+  font-size: 12.5px;
+  color: var(--at-text-3);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .site-nav { display: none; }
+}
